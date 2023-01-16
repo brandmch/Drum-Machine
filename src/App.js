@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
 import soundArr from "./sounds/sounds";
+import SoundButton from "./components/soundButton";
 
 function App() {
   const SoundButtons = () => {
     return soundArr.map((curr, ind) => {
-      const tempAudio = new Audio(curr);
-
-      return <div className="button-grid-item" id={ind}></div>;
+      return <SoundButton audio={curr} ind={ind} key={curr} />;
     });
+  };
+
+  window.document.onkeydown = (e) => {
+    let { key } = e;
+    if (key === "1") {
+      console.log("swwwaaagg");
+    }
   };
 
   return (
