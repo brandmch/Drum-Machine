@@ -1,20 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import soundArr from "./sounds/sounds";
 
+const useAudio = (sound) => {
+  const audio = useState(sound);
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => setPlaying(!playing);
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [playing, audio]);
+
+  useEffect(() => {
+    audio.addEventListener("ended", () => setPlaying(false));
+    return () => {
+      audio.removeEventListener("ended", () => setPlaying(false));
+    };
+  });
+
+  return [playing, toggle];
+};
+
+const SoundButton = (props) => {
+  const [playing, toggle] = useAudio(props.tempAudio);
+
+  return (
+    <div className="button-grid-item" onClick={toggle}>
+      <h2>{playing ? "Pause" : "Play"}</h2>
+    </div>
+  );
+};
+
 function App() {
-  const sounds = soundArr.reduce((acc, curr) => {
-    const newAudio = new Audio(curr);
-    return [...acc, newAudio];
-  }, []);
+  const SoundButtons = () => {
+    return soundArr.map((curr, ind) => {
+      const tempAudio = new Audio(curr);
+      return <SoundButton tempAudio={tempAudio} />;
+    });
+  };
 
   return (
     <div className="App">
-      {sounds.map((curr, ind) => (
-        <button className="button" onClick={() => curr.play()}>
-          Play {ind}
-        </button>
-      ))}
+      <div className="button-grid-container">
+        <h1>HEAD</h1>
+        <SoundButtons />
+      </div>
     </div>
   );
 }

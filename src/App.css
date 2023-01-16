@@ -4,6 +4,15 @@
   min-height: 100vh;
 }
 
-.button {
-  margin-top: 50vh;
+.button-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 30vw;
+  height: 40vh;
+}
+
+.button-grid-item {
+  background-color: aliceblue;
+  width: 8.5vw;
+  height: 10vh;
 }
