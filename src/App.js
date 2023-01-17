@@ -37,39 +37,57 @@ function App() {
       let { key } = e;
       switch (key) {
         case "1":
-          new Audio(soundArr[6]).play();
+          let audio1 = new Audio(soundArr[6]);
+          audio1.volume = volume;
+          audio1.play();
           setSoundTitle(soundTitleOrder[6]);
           break;
         case "2":
-          new Audio(soundArr[7]).play();
+          let audio2 = new Audio(soundArr[7]);
+          audio2.volume = volume;
+          audio2.play();
           setSoundTitle(soundTitleOrder[7]);
           break;
         case "3":
-          new Audio(soundArr[8]).play();
+          let audio3 = new Audio(soundArr[8]);
+          audio3.volume = volume;
+          audio3.play();
           setSoundTitle(soundTitleOrder[8]);
           break;
         case "4":
-          new Audio(soundArr[3]).play();
+          let audio4 = new Audio(soundArr[3]);
+          audio4.volume = volume;
+          audio4.play();
           setSoundTitle(soundTitleOrder[3]);
           break;
         case "5":
-          new Audio(soundArr[4]).play();
+          let audio5 = new Audio(soundArr[4]);
+          audio5.volume = volume;
+          audio5.play();
           setSoundTitle(soundTitleOrder[4]);
           break;
         case "6":
-          new Audio(soundArr[5]).play();
+          let audio6 = new Audio(soundArr[5]);
+          audio6.volume = volume;
+          audio6.play();
           setSoundTitle(soundTitleOrder[5]);
           break;
         case "7":
-          new Audio(soundArr[0]).play();
+          let audio7 = new Audio(soundArr[0]);
+          audio7.volume = volume;
+          audio7.play();
           setSoundTitle(soundTitleOrder[0]);
           break;
         case "8":
-          new Audio(soundArr[1]).play();
+          let audio8 = new Audio(soundArr[1]);
+          audio8.volume = volume;
+          audio8.play();
           setSoundTitle(soundTitleOrder[1]);
           break;
         case "9":
-          new Audio(soundArr[2]).play();
+          let audio9 = new Audio(soundArr[2]);
+          audio9.volume = volume;
+          audio9.play();
           setSoundTitle(soundTitleOrder[2]);
           break;
         default:
@@ -102,7 +120,9 @@ function App() {
                 style={styles[ind]}
                 onClick={() => {
                   if (power) {
-                    new Audio(curr).play();
+                    let audio = new Audio(curr);
+                    audio.volume = volume;
+                    audio.play();
                     setSoundTitle(soundTitleOrder[ind]);
                   }
                 }}
