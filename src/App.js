@@ -163,6 +163,7 @@ function App() {
                 setVolume(e.target.value);
               }}
             />
+            <h4>VOLUME</h4>
           </div>
         </div>
       </div>

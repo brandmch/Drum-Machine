@@ -63,11 +63,17 @@
 
 .power-button {
   height: 4vh;
-  width: 4vw;
+  width: 8.5vw;
+
   background-color: #4eacff;
   border-radius: 5px;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   margin-bottom: -2vh;
+}
+
+.power-button:active {
+  box-shadow: none;
+  background-color: aqua;
 }
 
 .block3 {
@@ -78,10 +84,12 @@
 }
 
 .power-light {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   border-radius: 100px;
   background-color: greenyellow;
+  margin-left: 1vw;
+  margin-bottom: 15vh;
 }
 
 .block5 {
@@ -102,4 +110,40 @@
 .block8 {
   grid-column: 1 / span 3;
   grid-row: 3;
+}
+
+.block8 > h4 {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .controller {
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 2vh;
+  }
+
+  .button-grid-container {
+    margin-right: 2vw;
+  }
+
+  .button-grid-item {
+    width: 12vw;
+    margin: 5px;
+  }
+
+  .controls-container {
+    width: 50vw;
+    height: 40vh;
+    margin-top: 2vh;
+    flex: 1;
+  }
+
+  .power-button {
+    width: 12vw;
+  }
+
+  .power-light {
+    justify-self: center;
+  }
 }
