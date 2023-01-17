@@ -3,7 +3,6 @@ import soundArr from "./sounds/sounds";
 
 window.document.onkeydown = (e) => {
   let { key } = e;
-
   switch (key) {
     case "1":
       new Audio(soundArr[6]).play();
@@ -33,12 +32,6 @@ window.document.onkeydown = (e) => {
       new Audio(soundArr[2]).play();
       break;
   }
-};
-
-const styles = {
-  1: {
-    backgroundColor: "#000000",
-  },
 };
 
 function App() {
