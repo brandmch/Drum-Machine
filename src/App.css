@@ -145,5 +145,12 @@
 
   .power-light {
     justify-self: center;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .controller {
+    transform: scale(0.9);
   }
 }
