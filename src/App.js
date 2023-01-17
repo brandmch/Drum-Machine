@@ -5,6 +5,8 @@ import soundArr from "./sounds/sounds";
 function App() {
   const [power, togglePower] = useState(true);
   const [soundTitle, setSoundTitle] = useState("");
+  const [volume, setVolume] = useState(1);
+
   const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
   const soundTitleOrder = [
     "Hat",
@@ -129,6 +131,18 @@ function App() {
           </div>
           <div className="block5">
             <h4>{soundTitle}</h4>
+          </div>
+          <div className="block8">
+            <input
+              max={1}
+              min={0}
+              step={0.01}
+              type="range"
+              value={volume}
+              onChange={(e) => {
+                setVolume(e.target.value);
+              }}
+            />
           </div>
         </div>
       </div>

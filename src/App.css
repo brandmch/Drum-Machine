@@ -100,3 +100,8 @@
   padding-top: 1vh;
   text-align: center;
 }
+
+.block8 {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+}
