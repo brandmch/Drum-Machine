@@ -3,6 +3,7 @@ import "./App.css";
 import soundArr from "./sounds/sounds";
 
 function App() {
+  const [power, togglePower] = useState(true);
   const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
   let styles = {
     0: {},
