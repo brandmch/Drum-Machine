@@ -14,8 +14,8 @@
   background-color: #ffffff;
   border: 8px solid #4eacff;
   border-radius: 20px;
-  min-height: 50vh;
-  min-width: 50vw;
+  height: 50vh;
+  width: 50vw;
 }
 
 .button-grid-container {
@@ -25,10 +25,9 @@
   width: 30vw;
   height: 40vh;
   column-gap: 1.3vw;
-  background-color: #f0f8ff;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
-  border: 1px solid #000000;
   padding-left: 2vw;
 }
 
@@ -49,7 +48,6 @@
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 33% 33% 33%;
   align-items: center;
-  border: 1px solid #000000;
   height: 40vh;
   flex: 1;
 }
