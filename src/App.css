@@ -1,7 +1,19 @@
 .App {
   text-align: center;
   background-color: #282c34;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  height: 50vh;
+  width: 50vw;
 }
 
 .button-grid-container {
@@ -9,10 +21,20 @@
   grid-template-columns: auto auto auto;
   width: 30vw;
   height: 40vh;
+  column-gap: 1.3vw;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000000;
 }
 
 .button-grid-item {
   background-color: aliceblue;
+  border: 1px solid #000000;
   width: 8.5vw;
   height: 10vh;
+}
+
+.button-grid-item:active {
+  background-color: aqua;
 }

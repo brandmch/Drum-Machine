@@ -36,20 +36,25 @@ window.document.onkeydown = (e) => {
 };
 
 function App() {
+  const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
   return (
     <div className="App">
-      <div className="button-grid-container">
-        {soundArr.map((curr) => {
-          return (
-            <div
-              key={curr}
-              className="button-grid-item"
-              onClick={() => {
-                new Audio(curr).play();
-              }}
-            ></div>
-          );
-        })}
+      <div className="controller">
+        <div className="button-grid-container">
+          {soundArr.map((curr, ind) => {
+            return (
+              <div
+                key={curr}
+                className="button-grid-item"
+                onClick={() => {
+                  new Audio(curr).play();
+                }}
+              >
+                <h2>{soundBoxOrder[ind]}</h2>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
