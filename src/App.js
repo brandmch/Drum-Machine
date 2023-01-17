@@ -1,19 +1,29 @@
 import "./App.css";
 import soundArr from "./sounds/sounds";
-import SoundButton from "./components/soundButton";
+
+const SoundButton = (props) => {
+  window.document.onkeydown = (e) => {
+    let { key } = e;
+    if (key === `${props.ind + 1}`) {
+      new Audio(props.audio).play();
+    }
+  };
+
+  return (
+    <div
+      className="button-grid-item"
+      onClick={() => {
+        new Audio(props.audio).play();
+      }}
+    ></div>
+  );
+};
 
 function App() {
   const SoundButtons = () => {
     return soundArr.map((curr, ind) => {
       return <SoundButton audio={curr} ind={ind} key={curr} />;
     });
-  };
-
-  window.document.onkeydown = (e) => {
-    let { key } = e;
-    if (key === "1") {
-      console.log("swwwaaagg");
-    }
   };
 
   return (
