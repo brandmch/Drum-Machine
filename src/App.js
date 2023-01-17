@@ -4,7 +4,19 @@ import soundArr from "./sounds/sounds";
 
 function App() {
   const [power, togglePower] = useState(true);
+  const [soundTitle, setSoundTitle] = useState("");
   const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
+  const soundTitleOrder = [
+    "Hat",
+    "Kick Light",
+    "Kick",
+    "Perc-1",
+    "Perc-4",
+    "Snare Off",
+    "Snare Rimshot",
+    "Snare Roll Short",
+    "Tom",
+  ];
   let styles = {
     0: {},
     1: {},
@@ -19,37 +31,48 @@ function App() {
   };
 
   window.document.onkeydown = (e) => {
-    let { key } = e;
-    switch (key) {
-      case "1":
-        new Audio(soundArr[6]).play();
-        break;
-      case "2":
-        new Audio(soundArr[7]).play();
-        break;
-      case "3":
-        new Audio(soundArr[8]).play();
-        break;
-      case "4":
-        new Audio(soundArr[3]).play();
-        break;
-      case "5":
-        new Audio(soundArr[4]).play();
-        break;
-      case "6":
-        new Audio(soundArr[5]).play();
-        break;
-      case "7":
-        new Audio(soundArr[0]).play();
-        break;
-      case "8":
-        new Audio(soundArr[1]).play();
-        break;
-      case "9":
-        new Audio(soundArr[2]).play();
-        break;
-      default:
-        break;
+    if (power) {
+      let { key } = e;
+      switch (key) {
+        case "1":
+          new Audio(soundArr[6]).play();
+          setSoundTitle(soundTitleOrder[6]);
+          break;
+        case "2":
+          new Audio(soundArr[7]).play();
+          setSoundTitle(soundTitleOrder[7]);
+          break;
+        case "3":
+          new Audio(soundArr[8]).play();
+          setSoundTitle(soundTitleOrder[8]);
+          break;
+        case "4":
+          new Audio(soundArr[3]).play();
+          setSoundTitle(soundTitleOrder[3]);
+          break;
+        case "5":
+          new Audio(soundArr[4]).play();
+          setSoundTitle(soundTitleOrder[4]);
+          break;
+        case "6":
+          new Audio(soundArr[5]).play();
+          setSoundTitle(soundTitleOrder[5]);
+          break;
+        case "7":
+          new Audio(soundArr[0]).play();
+          setSoundTitle(soundTitleOrder[0]);
+          break;
+        case "8":
+          new Audio(soundArr[1]).play();
+          setSoundTitle(soundTitleOrder[1]);
+          break;
+        case "9":
+          new Audio(soundArr[2]).play();
+          setSoundTitle(soundTitleOrder[2]);
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -60,6 +83,7 @@ function App() {
   function keyup({ key }) {
     document.getElementById(key).style = {};
   }
+
   document.addEventListener("keydown", keydown);
   document.addEventListener("keyup", keyup);
 
@@ -75,7 +99,10 @@ function App() {
                 className="button-grid-item"
                 style={styles[ind]}
                 onClick={() => {
-                  new Audio(curr).play();
+                  if (power) {
+                    new Audio(curr).play();
+                    setSoundTitle(soundTitleOrder[ind]);
+                  }
                 }}
               >
                 <h2>{soundBoxOrder[ind]}</h2>
@@ -84,9 +111,24 @@ function App() {
           })}
         </div>
         <div className="controls-container">
-          <div className="item1">
-            <div className="power-button"></div>
+          <div className="block2">
+            <div
+              className="power-button"
+              onClick={() => {
+                togglePower(!power);
+                setSoundTitle("");
+              }}
+            ></div>
             <h3>POWER</h3>
+          </div>
+          <div className="block3">
+            <div
+              className="power-light"
+              style={power ? {} : { backgroundColor: "red" }}
+            ></div>
+          </div>
+          <div className="block5">
+            <h4>{soundTitle}</h4>
           </div>
         </div>
       </div>
