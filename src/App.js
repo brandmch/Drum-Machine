@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import soundArr from "./sounds/sounds";
 
@@ -80,6 +81,12 @@ function App() {
               </div>
             );
           })}
+        </div>
+        <div className="controls-container">
+          <div className="item1">
+            <div className="power-button"></div>
+            <h3>POWER</h3>
+          </div>
         </div>
       </div>
     </div>
