@@ -3,6 +3,18 @@ import soundArr from "./sounds/sounds";
 
 function App() {
   const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
+  let styles = {
+    0: {},
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+    6: {},
+    7: {},
+    8: {},
+    9: {},
+  };
 
   window.document.onkeydown = (e) => {
     let { key } = e;
@@ -34,13 +46,20 @@ function App() {
       case "9":
         new Audio(soundArr[2]).play();
         break;
+      default:
+        break;
     }
   };
 
-  function changeBg(key) {
-    document.getElementById("1").style.backgroundColor = "green";
+  function keydown({ key }) {
+    document.getElementById(key).style.backgroundColor = "aqua";
+    document.getElementById(key).style.boxShadow = "none";
   }
-  document.addEventListener("keydown", changeBg);
+  function keyup({ key }) {
+    document.getElementById(key).style = {};
+  }
+  document.addEventListener("keydown", keydown);
+  document.addEventListener("keyup", keyup);
 
   return (
     <div className="App">
@@ -50,8 +69,9 @@ function App() {
             return (
               <div
                 key={curr}
-                id={ind}
+                id={soundBoxOrder[ind]}
                 className="button-grid-item"
+                style={styles[ind]}
                 onClick={() => {
                   new Audio(curr).play();
                 }}
