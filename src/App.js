@@ -35,6 +35,12 @@ window.document.onkeydown = (e) => {
   }
 };
 
+const styles = {
+  1: {
+    backgroundColor: "#000000",
+  },
+};
+
 function App() {
   const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
   return (

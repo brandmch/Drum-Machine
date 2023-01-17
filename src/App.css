@@ -22,19 +22,20 @@
   width: 30vw;
   height: 40vh;
   column-gap: 1.3vw;
-  background-color: #ffffff;
+  background-color: #f0f8ff;
   justify-content: center;
   align-items: center;
   border: 1px solid #000000;
 }
 
 .button-grid-item {
-  background-color: aliceblue;
-  border: 1px solid #000000;
+  background-color: #4eacff;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
   width: 8.5vw;
   height: 10vh;
 }
 
 .button-grid-item:active {
   background-color: aqua;
+  box-shadow: none;
 }
