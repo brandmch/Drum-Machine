@@ -2,46 +2,49 @@ import React, { useState } from "react";
 import "./App.css";
 import soundArr from "./sounds/sounds";
 
+// Needed to alter style of button on keypress
+let styles = {
+  0: {},
+  1: {},
+  2: {},
+  3: {},
+  4: {},
+  5: {},
+  6: {},
+  7: {},
+  8: {},
+  9: {},
+};
+
 function App() {
   const [power, togglePower] = useState(true);
   const [soundTitle, setSoundTitle] = useState("");
   const [volume, setVolume] = useState(1);
 
-  const soundOrder = {
-    Hat: 7,
-    "Kick Light": 8,
-    Kick: 9,
-    "Perc-1": 4,
-    "Perc-4": 5,
-    "Snare Off": 6,
-    "Snare Rimshot": 1,
-    "Snare Roll Short": 2,
-    Tom: 3,
-  };
+  // soundOrder keeps track of the names and keys of each sound
+  const soundOrder = [
+    ["Hat", 7],
+    ["Kick Light", 8],
+    ["Kick", 9],
+    ["Perc-1", 4],
+    ["Perc-4", 5],
+    ["Snare Off", 6],
+    ["Snare Rimshot", 1],
+    ["Snare Roll Short", 2],
+    ["Tom", 3],
+  ];
 
-  let styles = {
-    0: {},
-    1: {},
-    2: {},
-    3: {},
-    4: {},
-    5: {},
-    6: {},
-    7: {},
-    8: {},
-    9: {},
-  };
-
-  function playsound(ind) {
+  function playsound(ind, name) {
     let audio1 = new Audio(soundArr[ind]);
     audio1.volume = volume;
     audio1.play();
-    setSoundTitle(Object.keys(soundOrder)[ind]);
+    setSoundTitle(name);
   }
 
   window.document.onkeydown = (e) => {
+    let key = soundOrder.find((curr) => curr[1] == e.key);
     if (power) {
-      playsound(e.key - 1);
+      playsound(soundOrder.indexOf(key), key[0]);
     }
   };
 
@@ -60,20 +63,21 @@ function App() {
     <div className="App">
       <div className="controller">
         <div className="button-grid-container">
-          {Object.keys(soundOrder).map((curr, ind) => {
+          {soundOrder.map((curr, ind) => {
+            let [name, key] = curr;
             return (
               <div
-                key={curr}
-                id={soundOrder[curr]}
+                key={name}
+                id={key}
                 className="button-grid-item"
                 style={styles[ind]}
                 onClick={() => {
                   if (power) {
-                    playsound(soundOrder[curr] - 1);
+                    playsound(ind, name);
                   }
                 }}
               >
-                <h2>{soundOrder[curr]}</h2>
+                <h2>{key}</h2>
               </div>
             );
           })}
