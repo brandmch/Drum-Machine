@@ -22,6 +22,8 @@ function App() {
   const [volume, setVolume] = useState(1);
 
   // soundOrder keeps track of the names and keys of each sound
+  // Order of elements corresponds to order of sound files in soundArr
+  // Numbers match the sound with corresponding keyboard key
   const soundOrder = [
     ["Hat", 7],
     ["Kick Light", 8],
@@ -34,6 +36,9 @@ function App() {
     ["Tom", 3],
   ];
 
+  // Takes in [index] of sound in soundOrder
+  // Gets sound at soundArray[index]
+  // Uses name from soundOrder to set soundTitle
   function playsound(ind, name) {
     let audio1 = new Audio(soundArr[ind]);
     audio1.volume = volume;
@@ -41,13 +46,13 @@ function App() {
     setSoundTitle(name);
   }
 
+  // Keydown events
   window.document.onkeydown = (e) => {
     let key = soundOrder.find((curr) => curr[1] == e.key);
     if (power) {
       playsound(soundOrder.indexOf(key), key[0]);
     }
   };
-
   function keydown({ key }) {
     document.getElementById(key).style.backgroundColor = "aqua";
     document.getElementById(key).style.boxShadow = "none";
@@ -55,7 +60,6 @@ function App() {
   function keyup({ key }) {
     document.getElementById(key).style = {};
   }
-
   document.addEventListener("keydown", keydown);
   document.addEventListener("keyup", keyup);
 
