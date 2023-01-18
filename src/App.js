@@ -167,6 +167,12 @@ function App() {
           </div>
         </div>
       </div>
+      <footer>
+        <p>Brandon McHugh 2022</p>
+        <p>
+          <a href="https://github.com/brandmch/Drum-Machine">GitHub</a>
+        </p>
+      </footer>
     </div>
   );
 }
