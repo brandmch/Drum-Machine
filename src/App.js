@@ -7,18 +7,18 @@ function App() {
   const [soundTitle, setSoundTitle] = useState("");
   const [volume, setVolume] = useState(1);
 
-  const soundBoxOrder = [7, 8, 9, 4, 5, 6, 1, 2, 3];
-  const soundTitleOrder = [
-    "Hat",
-    "Kick Light",
-    "Kick",
-    "Perc-1",
-    "Perc-4",
-    "Snare Off",
-    "Snare Rimshot",
-    "Snare Roll Short",
-    "Tom",
-  ];
+  const soundOrder = {
+    Hat: 7,
+    "Kick Light": 8,
+    Kick: 9,
+    "Perc-1": 4,
+    "Perc-4": 5,
+    "Snare Off": 6,
+    "Snare Rimshot": 1,
+    "Snare Roll Short": 2,
+    Tom: 3,
+  };
+
   let styles = {
     0: {},
     1: {},
@@ -32,67 +32,16 @@ function App() {
     9: {},
   };
 
+  function playsound(ind) {
+    let audio1 = new Audio(soundArr[ind]);
+    audio1.volume = volume;
+    audio1.play();
+    setSoundTitle(Object.keys(soundOrder)[ind]);
+  }
+
   window.document.onkeydown = (e) => {
     if (power) {
-      let { key } = e;
-      switch (key) {
-        case "1":
-          let audio1 = new Audio(soundArr[6]);
-          audio1.volume = volume;
-          audio1.play();
-          setSoundTitle(soundTitleOrder[6]);
-          break;
-        case "2":
-          let audio2 = new Audio(soundArr[7]);
-          audio2.volume = volume;
-          audio2.play();
-          setSoundTitle(soundTitleOrder[7]);
-          break;
-        case "3":
-          let audio3 = new Audio(soundArr[8]);
-          audio3.volume = volume;
-          audio3.play();
-          setSoundTitle(soundTitleOrder[8]);
-          break;
-        case "4":
-          let audio4 = new Audio(soundArr[3]);
-          audio4.volume = volume;
-          audio4.play();
-          setSoundTitle(soundTitleOrder[3]);
-          break;
-        case "5":
-          let audio5 = new Audio(soundArr[4]);
-          audio5.volume = volume;
-          audio5.play();
-          setSoundTitle(soundTitleOrder[4]);
-          break;
-        case "6":
-          let audio6 = new Audio(soundArr[5]);
-          audio6.volume = volume;
-          audio6.play();
-          setSoundTitle(soundTitleOrder[5]);
-          break;
-        case "7":
-          let audio7 = new Audio(soundArr[0]);
-          audio7.volume = volume;
-          audio7.play();
-          setSoundTitle(soundTitleOrder[0]);
-          break;
-        case "8":
-          let audio8 = new Audio(soundArr[1]);
-          audio8.volume = volume;
-          audio8.play();
-          setSoundTitle(soundTitleOrder[1]);
-          break;
-        case "9":
-          let audio9 = new Audio(soundArr[2]);
-          audio9.volume = volume;
-          audio9.play();
-          setSoundTitle(soundTitleOrder[2]);
-          break;
-        default:
-          break;
-      }
+      playsound(e.key - 1);
     }
   };
 
@@ -111,23 +60,20 @@ function App() {
     <div className="App">
       <div className="controller">
         <div className="button-grid-container">
-          {soundArr.map((curr, ind) => {
+          {Object.keys(soundOrder).map((curr, ind) => {
             return (
               <div
                 key={curr}
-                id={soundBoxOrder[ind]}
+                id={soundOrder[curr]}
                 className="button-grid-item"
                 style={styles[ind]}
                 onClick={() => {
                   if (power) {
-                    let audio = new Audio(curr);
-                    audio.volume = volume;
-                    audio.play();
-                    setSoundTitle(soundTitleOrder[ind]);
+                    playsound(soundOrder[curr] - 1);
                   }
                 }}
               >
-                <h2>{soundBoxOrder[ind]}</h2>
+                <h2>{soundOrder[curr]}</h2>
               </div>
             );
           })}
